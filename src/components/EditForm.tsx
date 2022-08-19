@@ -5,7 +5,6 @@ import "./form.module.scss";
 type Props = {
   defaultValue: EventProps;
   onSubmit: (event: EventProps) => void;
-  // close: () => void;
 };
 
 function getTime(time: Date, position: number) {

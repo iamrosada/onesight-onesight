@@ -39,27 +39,28 @@ export const EventsProvider = ({ children }: { children: React.ReactNode }) => {
   const [createEvents, setCreateEvents] = React.useState<EventProps[]>([]);
 
   React.useEffect(() => {
-    API.get("projettest", "/schedules", {}).then((onesightRes) =>
-      console.log("testando", onesightRes)
-    );
+    // API.get("onesight", "/calendar", {}).then((onesightRes) =>
+    //   console.log("testando", onesightRes)
+    // );
     setHydrated(true);
   }, []);
 
   const onAddEvent = React.useCallback(
     (event: EventProps) => {
       setEvents([...events, event]);
-      API.post("projettest", "/schedules", {
-        body: {
-          title: event.title,
-          // end: event.end,
-          // id: event.id,
-          // start: event.start,
-          // location: event.location,
-          // isDeleted: event.isDeleted,
-          // isConfirmed: event.isConfirmed,
-          // allDay: event.allDay,
-        },
-      });
+      //   API.post("onesight", "/calendar/{", {
+      //     body: {
+      //       title: event.title,
+      //       end: event.end,
+      //       id: event.id,
+      //       start: event.start,
+      //       location: event.location,
+      //       isDeleted: event.isDeleted,
+      //       isConfirmed: event.isConfirmed,
+      //       allDay: event.allDay,
+      //     },
+      //   });
+      // },
     },
     [events]
   );
