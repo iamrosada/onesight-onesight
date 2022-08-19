@@ -4,10 +4,10 @@ import { v4 as uuid } from "uuid";
 import { useEvents } from "../context/events";
 import { EventProps } from "../types";
 import Amplify, { API } from "aws-amplify";
-import config from "../aws-exports";
+// import config from "../aws-exports";
 import "./form.module.scss";
 
-Amplify.configure(config);
+// Amplify.configure(config);
 
 type Props = {
   defaultValue: EventProps;
