@@ -20,7 +20,7 @@ export default function EditForm({ defaultValue, onSubmit }: Props) {
   const { onCloseModal } = useEvents();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
+    const form = e.target as HTMLFormElement | any;
     try {
       if (form.elements[6].value.trim()) {
         const data = {

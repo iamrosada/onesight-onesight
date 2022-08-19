@@ -2,7 +2,6 @@ import React from "react";
 
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import { useRouter } from "next/router";
-import { v4 as uuid } from "uuid";
 import moment from "moment";
 import { EventProps } from "../types";
 import { useEvents } from "../context/events";
