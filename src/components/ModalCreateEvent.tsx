@@ -29,7 +29,7 @@ const ModalCreateEvent = ({ close, sendDataToModal }: any) =>
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
-      const form = e.target as HTMLFormElement;
+      const form = e.target as HTMLFormElement | any;
       console.log("value form", form);
 
       if (form.elements[6].value.trim()) {
