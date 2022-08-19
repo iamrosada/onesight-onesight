@@ -1,0 +1,111 @@
+section.container-section {
+  max-width: 50.5rem;
+  max-height: 54.5rem;
+  border-radius: 7px;
+  background-color: #fefefe;
+  margin: 0 auto 150px auto;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  > a {
+    text-decoration: none;
+    color: #1967d2;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    background-color: #e8f0fe;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  > div#wrapper {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color: rgb(190, 176, 176);
+    background-color: rgba(247, 240, 240, 0.4);
+
+    > header#container {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 50px;
+      margin-left: auto;
+      transition-duration: 300ms;
+
+      > .edit-button {
+        background-color: #2196f3;
+        border: none;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+        :hover {
+          background-color: #1976d2;
+        }
+      }
+      > .remove-button {
+        background-color: #f44336;
+        border: none;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+        :hover {
+          background-color: #f44336;
+        }
+      }
+      > .confirm-button {
+        background-color: #4caf50;
+        border: none;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+        :hover {
+          background-color: #388e3c;
+        }
+      }
+    }
+    > div#title-event {
+      font-size: 20px;
+      color: rgb(132, 130, 130);
+      > .name-event {
+      }
+      > h1 {
+        font-size: 40px;
+        margin: 10px 0px 10px 0px;
+      }
+      > span {
+        color: #1967d2;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        background-color: #e8f0fe;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      > .day-date {
+        margin: 15px 0px 15px 0px;
+        display: flex;
+        justify-content: space-between;
+      }
+      > .local-event {
+        margin: 15px 0px 15px 0px;
+      }
+      > .back-calendar {
+        color: #1967d2;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        background-color: #e8f0fe;
+        padding: 10px;
+        border-radius: 4px;
+      }
+    }
+  }
+}

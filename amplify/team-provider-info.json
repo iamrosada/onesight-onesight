@@ -1,0 +1,27 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-onesight-dev-230011-authRole",
+      "UnauthRoleArn": "arn:aws:iam::613720083039:role/amplify-onesight-dev-230011-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::613720083039:role/amplify-onesight-dev-230011-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-onesight-dev-230011-deployment",
+      "UnauthRoleName": "amplify-onesight-dev-230011-unauthRole",
+      "StackName": "amplify-onesight-dev-230011",
+      "StackId": "arn:aws:cloudformation:eu-west-2:613720083039:stack/amplify-onesight-dev-230011/999b8f60-1ff9-11ed-8675-06748188f90c",
+      "AmplifyAppId": "d3smlxwbfsvsp8",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-onesight-dev-230011-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "undefined": {}
+      },
+      "function": {
+        "calendarefunction": {
+          "deploymentBucketName": "amplify-onesight-dev-230011-deployment",
+          "s3Key": "amplify-builds/calendarefunction-494f6c7650522f323565-build.zip"
+        }
+      }
+    }
+  }
+}

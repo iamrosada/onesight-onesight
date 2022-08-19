@@ -1,0 +1,14 @@
+{
+  "resourceName": "onesightdb1",
+  "tableName": "onesightdb1",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "start",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
