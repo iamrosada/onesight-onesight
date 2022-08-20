@@ -7,15 +7,18 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
 - [Nextjs](https://nextjs.org/)
-- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [TypeScript](https://www.typescriptlang.org/)
 - [dynamodb](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/dynamodb-examples-using-tables.html)
-- [Amplify](https://docs.amplify.aws/start/getting-started/setup/q/integration/react/)
+- [MongoDb](https://www.mongodb.com/)
+- [Sass](https://sass-lang.com/)
 
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+- Crie seu próprio arquivo **.env.local** com base em **.env.example** (Crie uma instância do mongoDB no MongoDB Atlas ou no contêiner docker e cole o URL do banco de dados em **.env.local** e também crie uma conta em auth0 e cole as variáveis DATABASE_URL).
 
 ```bash
 # clone the project
