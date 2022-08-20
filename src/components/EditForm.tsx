@@ -32,7 +32,7 @@ const EditForm = ({ defaultValue, onSubmit }: Props) => {
           end: new Date(form.elements[3].value + " " + form.elements[4].value),
           allDay: form.elements[5].checked,
           location: form.elements[6].value,
-          // id: defaultValue.id,
+          id: defaultValue.id,
           isConfirmed: defaultValue.isConfirmed,
           isDeleted: false,
           _id: defaultValue._id,
