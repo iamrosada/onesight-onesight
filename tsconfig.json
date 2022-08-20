@@ -5,11 +5,11 @@
     "allowJs": true,
     "checkJs": false,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -18,6 +18,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/database.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
