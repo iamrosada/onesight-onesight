@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { EventsProvider } from "../context/events";
+import EventsProvider from "../context/events";
 
 Modal.setAppElement("#__next");
 

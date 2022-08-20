@@ -21,14 +21,15 @@ const getTime = (time: Date, position: number) => {
 };
 
 const getDayEvent = (time: Date) => {
-  return moment(new Date(time.getTime())).format("dddd DD MMMM");
+  return moment(new Date(time?.getTime())).format("dddd DD MMMM");
 };
 const Schedule = () => {
   const { query } = useRouter();
   const { events, onEditEvent, onCloseModal, open } = useEvents();
+  console.log("query", query.id);
 
-  const event = events.find(({ id }) => id === query.id)!;
-
+  const event = events.find(({ _id }) => _id === query.id)!;
+  console.log(event, events);
   const openModal = React.useCallback(() => {
     onCloseModal(true);
   }, []);
@@ -36,7 +37,7 @@ const Schedule = () => {
   const closeModal = React.useCallback(() => {
     onCloseModal(false);
   }, []);
-
+  console.log(event, "event?.start");
   return (
     <>
       <section className={styles["container-section"]}>
@@ -48,7 +49,7 @@ const Schedule = () => {
             <Button
               title="Edit"
               className={styles["edit-button"]}
-              disabled={event.isDeleted}
+              disabled={event?.isDeleted}
               onClick={openModal}
             >
               <FiEdit />
@@ -60,7 +61,7 @@ const Schedule = () => {
                 onEditEvent({ ...event, isDeleted: true, isConfirmed: false });
                 toast("O evento acabou por ser Removido!");
               }}
-              disabled={event.isDeleted}
+              disabled={event?.isDeleted}
               className={styles["remove-button"]}
             >
               <FiTrash />
@@ -72,7 +73,7 @@ const Schedule = () => {
                 onEditEvent({ ...event, isConfirmed: true, isDeleted: false });
                 toast("Parabéns,o evento acabou por ser confirmado");
               }}
-              disabled={event.isDeleted}
+              disabled={event?.isDeleted}
               className={styles["confirm-button"]}
             >
               <FiCheck />
@@ -85,9 +86,9 @@ const Schedule = () => {
             <span>Evento</span>
             <div className={styles["day-date"]}>
               <div>
-                <span> {getDayEvent(event.start)}</span>
+                <span> {getDayEvent(event?.start)}</span>
                 {"-"}
-                <span>{getTime(event.start, 1)}</span>
+                <span>{getTime(event?.start, 1)}</span>
               </div>
               <div>
                 <span> {getDayEvent(event.end)}</span>
@@ -109,7 +110,6 @@ const Schedule = () => {
             onEditEvent(ev);
             closeModal();
           }}
-          // close={setIsOpen}
           defaultValue={event}
         />
       </Modal>

@@ -7,6 +7,8 @@ import { EventProps } from "../types";
 import { useEvents } from "../context/events";
 import ModalCreateEvent from "../components/ModalCreateEvent";
 import styles from "../components/form.module.scss";
+import dbConnect from "../utils/database";
+import getCalendars from "../model/Client";
 
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
@@ -72,7 +74,7 @@ const ReactBigCalendar = () => {
         events={events}
         style={{ height: "100vh" }}
         onSelectSlot={(e) => handleSelect(e)}
-        onSelectEvent={({ id }: EventProps) => handleSelectedEvent(id)}
+        onSelectEvent={({ _id }: EventProps) => handleSelectedEvent(_id)}
         eventPropGetter={(event: EventProps) => ({
           ...event,
           style: {

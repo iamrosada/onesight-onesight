@@ -1,10 +1,8 @@
 import React from "react";
-import Amplify, { API } from "aws-amplify";
 import { EventProps } from "../types";
-
 type ContextProps = {
   events: EventProps[];
-  // toogle: boolean
+
   open: boolean;
   createEvents: EventProps[];
   onAddEvent: (event: EventProps) => void;
@@ -12,7 +10,7 @@ type ContextProps = {
   onCreateEvent: (event: EventProps) => void;
   onCloseModal: (toogle: boolean) => void;
 };
-
+const contentType = "application/json";
 const EventsContext = React.createContext<ContextProps>({
   events: [],
   createEvents: [],
@@ -20,7 +18,6 @@ const EventsContext = React.createContext<ContextProps>({
   onEditEvent: () => {},
   onCreateEvent: () => {},
   onCloseModal: () => {},
-  // toogle: false,
   open: false,
 });
 
@@ -32,43 +29,68 @@ export const useEvents = () => {
   return context;
 };
 
-export const EventsProvider = ({ children }: { children: React.ReactNode }) => {
+const EventsProvider = ({ children }: { children: React.ReactNode }) => {
   const [events, setEvents] = React.useState<EventProps[]>([]);
   const [open, setOpen] = React.useState(false);
   const [hydrated, setHydrated] = React.useState(false);
   const [createEvents, setCreateEvents] = React.useState<EventProps[]>([]);
 
   React.useEffect(() => {
-    // API.get("onesight", "/calendar", {}).then((onesightRes) =>
-    //   console.log("testando", onesightRes)
-    // );
+    const fetchData = async () => {
+      const data_ = await fetch("/api");
+      const { data } = await data_.json();
+
+      setEvents(
+        data.map((item: EventProps) => ({
+          ...item,
+          start: new Date(item.start),
+          end: new Date(item.end),
+        }))
+      );
+    };
+
+    fetchData().catch(console.error);
     setHydrated(true);
   }, []);
 
   const onAddEvent = React.useCallback(
-    (event: EventProps) => {
+    async (event: EventProps) => {
       setEvents([...events, event]);
-      //   API.post("onesight", "/calendar/{", {
-      //     body: {
-      //       title: event.title,
-      //       end: event.end,
-      //       id: event.id,
-      //       start: event.start,
-      //       location: event.location,
-      //       isDeleted: event.isDeleted,
-      //       isConfirmed: event.isConfirmed,
-      //       allDay: event.allDay,
-      //     },
-      //   });
-      // },
+
+      const res = await fetch("/api/", {
+        method: "POST",
+        headers: {
+          Accept: contentType,
+          "Content-Type": contentType,
+        },
+        body: JSON.stringify(event),
+      });
+
+      if (!res.ok) {
+        throw new Error("Error");
+      }
     },
-    [events]
+    [events.length]
   );
 
   const onEditEvent = React.useCallback(
-    (event: EventProps) => {
-      setEvents(events.map((e) => (e.id === event.id ? event : e)));
+    async (event: EventProps) => {
+      setEvents(events.map((e) => (e._id === event._id ? event : e)));
+
+      const res = await fetch(`/api/schedule/${event._id}`, {
+        method: "PUT",
+        headers: {
+          Accept: contentType,
+          "Content-Type": contentType,
+        },
+        body: JSON.stringify(event),
+      });
+
+      if (!res.ok) {
+        throw new Error("Error");
+      }
     },
+
     [events]
   );
   const onCloseModal = React.useCallback((toggle: boolean) => {
@@ -101,3 +123,4 @@ export const EventsProvider = ({ children }: { children: React.ReactNode }) => {
     </EventsContext.Provider>
   );
 };
+export default EventsProvider;

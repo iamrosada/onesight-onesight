@@ -9,7 +9,6 @@ type Props = {
 };
 
 const getTime = (time: Date, position: number) => {
-  console.log(time);
   const userTimezoneOffset = time.getTimezoneOffset() * 60000;
   return new Date(time.getTime() - userTimezoneOffset)
     .toISOString()
@@ -33,11 +32,13 @@ const EditForm = ({ defaultValue, onSubmit }: Props) => {
           end: new Date(form.elements[3].value + " " + form.elements[4].value),
           allDay: form.elements[5].checked,
           location: form.elements[6].value,
-          id: defaultValue.id,
+          // id: defaultValue.id,
           isConfirmed: defaultValue.isConfirmed,
           isDeleted: false,
+          _id: defaultValue._id,
+          __v: defaultValue.__v,
         };
-        console.log(data);
+
         onSubmit(data);
         toast("Editado com sucesso");
       } else {
