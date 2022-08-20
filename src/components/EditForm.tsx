@@ -2,24 +2,26 @@ import { toast } from "react-toastify";
 import { useEvents } from "../context/events";
 import { EventProps } from "../types";
 import "./form.module.scss";
+
 type Props = {
   defaultValue: EventProps;
   onSubmit: (event: EventProps) => void;
 };
 
-function getTime(time: Date, position: number) {
+const getTime = (time: Date, position: number) => {
   console.log(time);
   const userTimezoneOffset = time.getTimezoneOffset() * 60000;
   return new Date(time.getTime() - userTimezoneOffset)
     .toISOString()
     .split("T")
     [position].slice(0, 5);
-}
+};
 
-export default function EditForm({ defaultValue, onSubmit }: Props) {
+const EditForm = ({ defaultValue, onSubmit }: Props) => {
   const { onCloseModal } = useEvents();
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const form = e.target as HTMLFormElement | any;
     try {
       if (form.elements[6].value.trim()) {
@@ -44,7 +46,7 @@ export default function EditForm({ defaultValue, onSubmit }: Props) {
     } catch (error) {
       toast("Por favor verifica os seus dados se estão corretos");
     }
-  }
+  };
 
   return (
     <form id="main-modal-create-event" onSubmit={handleSubmit}>
@@ -135,4 +137,5 @@ export default function EditForm({ defaultValue, onSubmit }: Props) {
       </div>
     </form>
   );
-}
+};
+export default EditForm;

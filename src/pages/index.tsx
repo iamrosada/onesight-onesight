@@ -11,7 +11,7 @@ import styles from "../components/form.module.scss";
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
 
-function getEventBackground({ isConfirmed, isDeleted }: EventProps) {
+const getEventBackground = ({ isConfirmed, isDeleted }: EventProps) => {
   if (isDeleted) {
     return "red";
   }
@@ -21,9 +21,9 @@ function getEventBackground({ isConfirmed, isDeleted }: EventProps) {
   }
 
   return "rgba(2, 2, 2, 0.4)";
-}
+};
 
-export default function ReactBigCalendar() {
+const ReactBigCalendar = () => {
   const ref = React.useRef(null);
   const router = useRouter();
   const { events, onAddEvent } = useEvents();
@@ -33,9 +33,9 @@ export default function ReactBigCalendar() {
   const [sendDataToModal, setSendDataToModal] = React.useState<EventProps[]>(
     []
   );
-  function handleSelectedEvent(eventId: string) {
+  const handleSelectedEvent = (eventId: string) => {
     router.push(`/schedule/${eventId}`);
-  }
+  };
 
   const handleSelect = (e: any) => {
     setSendDataToModal(e);
@@ -84,4 +84,6 @@ export default function ReactBigCalendar() {
       />
     </div>
   );
-}
+};
+
+export default ReactBigCalendar;

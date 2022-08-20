@@ -9,13 +9,13 @@ import { EventsProvider } from "../context/events";
 
 Modal.setAppElement("#__next");
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <EventsProvider>
       <ToastContainer />
       <Component {...pageProps} />
     </EventsProvider>
   );
-}
+};
 
 export default MyApp;

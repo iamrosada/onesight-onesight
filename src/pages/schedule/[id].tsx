@@ -9,29 +9,31 @@ import Button from "../../components/Button";
 import Modal from "../../components/Modal";
 import styles from "../../styles/details.module.scss";
 import { toast } from "react-toastify";
+import moment from "moment";
 
-function getTime(time: Date, position: number) {
+const getTime = (time: Date, position: number) => {
   console.log(time);
   const userTimezoneOffset = time.getTimezoneOffset() * 60000;
   return new Date(time.getTime() - userTimezoneOffset)
     .toISOString()
     .split("T")
     [position].slice(0, 5);
-}
-export default function Schedule() {
+};
+
+const getDayEvent = (time: Date) => {
+  return moment(new Date(time.getTime())).format("dddd DD MMMM");
+};
+const Schedule = () => {
   const { query } = useRouter();
   const { events, onEditEvent, onCloseModal, open } = useEvents();
-  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const event = events.find(({ id }) => id === query.id)!;
 
   const openModal = React.useCallback(() => {
-    // setIsOpen(true);
     onCloseModal(true);
   }, []);
 
   const closeModal = React.useCallback(() => {
-    // setIsOpen(false);
     onCloseModal(false);
   }, []);
 
@@ -82,9 +84,16 @@ export default function Schedule() {
             <h1 className="">{event?.title}</h1>
             <span>Evento</span>
             <div className={styles["day-date"]}>
-              <span> Sext-feira, 26 de agosto</span>
-              <span>{getTime(event.start, 1)}</span>
-              <span>{getTime(event.end, 1)}</span>
+              <div>
+                <span> {getDayEvent(event.start)}</span>
+                {"-"}
+                <span>{getTime(event.start, 1)}</span>
+              </div>
+              <div>
+                <span> {getDayEvent(event.end)}</span>
+                {"-"}
+                <span>{getTime(event.end, 1)}</span>
+              </div>
             </div>
             <span>Local</span>
             <div className={styles["local-event"]}>
@@ -106,4 +115,5 @@ export default function Schedule() {
       </Modal>
     </>
   );
-}
+};
+export default Schedule;

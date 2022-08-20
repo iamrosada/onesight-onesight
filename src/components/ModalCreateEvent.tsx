@@ -13,21 +13,21 @@ type Props = {
   defaultValue: EventProps;
   onSubmit: (event: EventProps) => void;
 };
-function getTime(time: Date, position: number) {
+const getTime = (time: Date, position: number) => {
   console.log(time);
   const userTimezoneOffset = time.getTimezoneOffset() * 60000;
   return new Date(time.getTime() - userTimezoneOffset)
     .toISOString()
     .split("T")
     [position].slice(0, 5);
-}
+};
 
 const ModalCreateEvent = ({ close, sendDataToModal }: any) =>
   // { defaultValue, onSubmit }: Props
   {
     const { createEvents, onAddEvent } = useEvents();
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const form = e.target as HTMLFormElement | any;
       console.log("value form", form);
@@ -52,7 +52,7 @@ const ModalCreateEvent = ({ close, sendDataToModal }: any) =>
       } else {
         toast("Adicione uma localização");
       }
-    }
+    };
     return (
       <form id="main-modal-create-event" onSubmit={handleSubmit}>
         <input type="text" placeholder="Adicionar título" required />

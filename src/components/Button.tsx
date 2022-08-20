@@ -3,14 +3,14 @@ import styles from "./button.module.scss";
 
 type Props = JSX.IntrinsicElements["button"];
 
-export default function Button({
+const Button = ({
   children,
   onClick,
   className,
   disabled,
   title,
   ...props
-}: Props) {
+}: Props) => {
   return (
     <button
       {...props}
@@ -26,4 +26,5 @@ export default function Button({
       {children}
     </button>
   );
-}
+};
+export default Button;

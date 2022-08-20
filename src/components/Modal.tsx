@@ -8,12 +8,7 @@ type Props = {
   contentLabel?: string;
 };
 
-export default function Modal({
-  children,
-  isOpen,
-  onClose,
-  contentLabel,
-}: Props) {
+const Modal = ({ children, isOpen, onClose, contentLabel }: Props) => {
   return (
     <CustomModal
       isOpen={isOpen}
@@ -24,4 +19,5 @@ export default function Modal({
       {children}
     </CustomModal>
   );
-}
+};
+export default Modal;
