@@ -1,14 +1,6 @@
 const path = require("path");
 /** @type {import('next').NextConfig} */
-const withTM = require("next-transpile-modules")([
-  "@fullcalendar/common",
-  "@babel/preset-react",
-  "@fullcalendar/common",
-  "@fullcalendar/daygrid",
-  "@fullcalendar/interaction",
-  "@fullcalendar/react",
-  "@fullcalendar/timegrid",
-]);
+const withTM = require("next-transpile-modules")(["@babel/preset-react"]);
 
 const nextConfig = {
   reactStrictMode: true,
