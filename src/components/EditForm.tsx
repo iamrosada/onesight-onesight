@@ -62,6 +62,7 @@ const EditForm = ({ defaultValue, onSubmit }: Props) => {
           <div>
             <span>Data para começar</span>
             <input
+              style={{ width: "340px", marginRight: "50px" }}
               type="date"
               name="startTime"
               id="start_time-filed"
@@ -87,6 +88,7 @@ const EditForm = ({ defaultValue, onSubmit }: Props) => {
           <div>
             <span>Data para terminar</span>
             <input
+              style={{ width: "340px" }}
               type="date"
               name="startTime"
               id="start_time-filed"

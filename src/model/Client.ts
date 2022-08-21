@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
+import { EventProps } from '../types'
 
-const CalendarSchema = new mongoose.Schema({
+const CalendarSchema = new mongoose.Schema<EventProps>({
   end: {
     type: Date
   },
@@ -13,8 +14,9 @@ const CalendarSchema = new mongoose.Schema({
   isDeleted: Boolean,
   isConfirmed: Boolean,
   id: String,
+  __v: Number
 })
+const Calendar = mongoose.models.Calendar as mongoose.Model<EventProps> || mongoose.model("Calendar", CalendarSchema)
 
-const Calendar = mongoose.models.Calendar || mongoose.model("Calendar", CalendarSchema)
 
-export default Calendar 
+export default Calendar

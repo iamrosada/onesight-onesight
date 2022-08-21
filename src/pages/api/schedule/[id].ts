@@ -1,3 +1,4 @@
+/* tslint:disable */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Calendar from '../../../model/Client'
 import dbConnect from '../../../utils/database'
